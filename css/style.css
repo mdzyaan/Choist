@@ -1,195 +1,130 @@
 .border {
-    border: 3px solid black;
-}
-
-// Variable 
-$color-primary:#1e83e2 ;
-$color-primary-light:#2998ff ;
-$color-primary-dark: #5643fa;
-
-$color-grey-light-1: #f7f7f7;
-$color-grey-light-2: #eee;
-  
-$color-grey-dark: #777;
-$color-grey-dark-2: #999;   
-$color-grey-dark-3: #333;                
-                      
-$color-white: #fff;
-$color-black: #000;
-
-// reset 
+  border: 3px solid black; }
 
 *,
 *::after,
 *::before {
-	margin: 0;
-	padding: 0;
-	box-sizing: inherit;
-}
-
-// default browser font size is 16px
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
 
 html {
-	// This defines what 1rem is
-	font-size: 62.5%;  // 1rem = 10px; 	10px/16px =62.5%;	
-}
+  font-size: 62.5%; }
 
 body {
-    font-family: "lato";
-	font-weight: 400;
-    line-height: 1.7;
-    color: $color-grey-dark;
-	background-color: $color-grey-light-1;
-    box-sizing: border-box;
-    
-}
-// component
-// 1. button
+  font-family: "lato";
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  background-color: #f7f7f7;
+  box-sizing: border-box; }
+
 .btn {
-    font-size: 1.5rem;
-	display: inline-block;
-    border: transparent;
-    
-    
-}
+  font-size: 1.5rem;
+  display: inline-block;
+  border: transparent; }
+
 .btn-filled {
-    text-align: center;
-    text-transform: capitalize;
-    color: $color-white;
-    background-image: linear-gradient(to right, $color-primary-light, $color-primary);
-    
-}
+  text-align: center;
+  text-transform: capitalize;
+  color: #fff;
+  background-image: linear-gradient(to right, #2998ff, #1e83e2); }
+
 .btn-nofill {
-    color: $color-primary;      
-    border: 2px solid $color-primary;
-    background-color: $color-white;
-    transition: all .2s;
+  color: #1e83e2;
+  border: 2px solid #1e83e2;
+  background-color: #fff;
+  transition: all .2s; }
+  .btn-nofill:hover {
+    color: #fff;
+    background-color: #1e83e2; }
 
-    &:hover {
-        color: $color-white;
-        background-color: $color-primary;
-    }
-}
-// header styling
 .top {
-    text-align: center;
-    background-color: $color-white;
-    box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.1);
-    margin-bottom: 1rem;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem; }
+  .top__header {
+    font-family: 'Lobster', cursive; }
+    .top__header-text {
+      font-size: 5rem;
+      letter-spacing: 0.5rem;
+      width: 100%;
+      margin: 0 auto;
+      background-image: linear-gradient(to right, #1e83e2, #5643fa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent; }
 
-    &__header {
-        font-family: 'Lobster', cursive;
-        
-        &-text {
-            font-size: 5rem;
-            letter-spacing: 0.5rem;
-            width: 100%;
-            margin: 0 auto;
-            background-image: linear-gradient(to right, $color-primary, $color-primary-dark);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent  ;
-        }
-    }
-}
-
-// input styling
 .bottom {
-    width: 70rem;
-    margin: 0 ; 
-    position: fixed;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-
-    &__cta {
-        font-size: 3rem;
-        margin: 1rem;
-        padding: 0.4rem;
-        height: 6.2rem;
-        transition: all .5s;
-        &:hover {
-            box-shadow: 0rem -1rem 2rem rgba(0, 0, 0, 0.1);
-        }
-    }
-    &__input {
-        padding: 1rem;
-        padding-right: 14rem;
-        width: 100%;
-        color: $color-grey-dark;
-        height: 6.2rem;
-        border: none;
-        background-color: $color-white;
-        font-size: 2rem;
-        box-shadow: 0rem -1rem 2rem rgba(0, 0, 0, 0.1)
-
-    }
-    &__button {
-        font-size: 2rem;
-        position: absolute;
-        bottom  : .26rem;
-        right: .3rem;
-        padding: 1.5rem 4rem;
-    }
-}
-// board styling
+  width: 70rem;
+  margin: 0;
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%); }
+  .bottom__cta {
+    font-size: 3rem;
+    margin: 1rem;
+    padding: 0.4rem;
+    height: 6.2rem;
+    transition: all .5s; }
+    .bottom__cta:hover {
+      box-shadow: 0rem -1rem 2rem rgba(0, 0, 0, 0.1); }
+  .bottom__input {
+    padding: 1rem;
+    padding-right: 14rem;
+    width: 100%;
+    color: #777;
+    height: 6.2rem;
+    border: none;
+    background-color: #fff;
+    font-size: 2rem;
+    box-shadow: 0rem -1rem 2rem rgba(0, 0, 0, 0.1); }
+  .bottom__button {
+    font-size: 2rem;
+    position: absolute;
+    bottom: .26rem;
+    right: .3rem;
+    padding: 1.5rem 4rem; }
 
 .board {
-    font-size: 2rem;
-    width: 70rem;
-    margin: 0 auto;
-    height: 50rem;
-    overflow: scroll;
-    
-    &__card {
-        background-color: #fff;
-        margin-bottom: 1rem;
-        height: 6rem;
-        padding: 1rem;
-        transition: all 0.5s;
-        
-        &:hover {
-            box-shadow: 0rem 1rem 2rem rgba(0, 0, 0, 0.1);
-        }
+  font-size: 2rem;
+  width: 70rem;
+  margin: 0 auto;
+  height: 50rem;
+  overflow: scroll; }
+  .board__card {
+    background-color: #fff;
+    margin-bottom: 1rem;
+    height: 6rem;
+    padding: 1rem;
+    transition: all 0.5s; }
+    .board__card:hover {
+      box-shadow: 0rem 1rem 2rem rgba(0, 0, 0, 0.1); }
+    .board__card-num {
+      text-align: center;
+      width: 4rem;
+      height: 4rem;
+      padding: 0.2rem;
+      margin-right: 1rem;
+      border-radius: 100%;
+      float: left;
+      background-color: #1e83e2;
+      color: #fff; }
+    .board__card-text {
+      display: inline-block; }
+    .board__card a {
+      text-decoration: none;
+      float: right;
+      font-size: 3rem;
+      display: inline-block;
+      background-image: linear-gradient(to right, #2998ff, #5643fa);
+      -webkit-background-clip: text;
+      color: transparent; }
 
-        &-num {
-            text-align: center;
-            width: 4rem;
-            height: 4rem;
-            padding: 0.2rem;
-            margin-right: 1rem;
-            border-radius: 100%;
-            float: left;
-            background-color: $color-primary;
-            color: $color-white;
-        }
-        &-text {
-            display: inline-block;
-        }
-        a {
-            text-decoration: none;
-            float: right;
-            font-size: 3rem;
-            display: inline-block;
-            background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
-            -webkit-background-clip: text;
-            color: transparent;
-            
-        }
-        
-
-       
-    }
-  
-}
-@media  (max-width: 700px) {
-    .bottom {
-        width: 100%;
-
-      
-    }
-    .board {
-        width: 100%;
-    }
-}
-
+@media (max-width: 700px) {
+  .bottom {
+    width: 100%; }
+  .board {
+    width: 100%; } }
