@@ -123,7 +123,7 @@ body {
       -webkit-background-clip: text;
       color: transparent; }
 
-@media (max-width: 700px) {
+@media (min-width:320px) And (max-width: 700px) {
   .bottom {
     width: 100%; }
   .board {
