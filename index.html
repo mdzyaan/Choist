@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700|Lobster" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link rel="stylesheet" href="css/iconfont.css">
         <link rel="stylesheet" href="css/style.css">
         <title>Choist</title>
@@ -19,73 +20,34 @@
                 <div class="board__card" id='opt-0'>
                     <div class="board__card-num">1</div>
                     <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
+                    <button class="board__card-delete"><i class="far fa-times-circle"></i></button>
                 </div>
                 <div class="board__card" id='opt-0'>
                     <div class="board__card-num">1</div>
                     <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
+                    <button class="board__card-delete"><i class="far fa-times-circle"></i></button>
                 </div>
                 <div class="board__card" id='opt-0'>
                     <div class="board__card-num">1</div>
                     <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
+                    <button class="board__card-delete"><i class="far fa-times-circle"></i></button>
                 </div>
-                <div class="board__card" id='opt-0'>
-                    <div class="board__card-num">1</div>
-                    <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
-                </div>
-                <div class="board__card" id='opt-0'>
-                    <div class="board__card-num">1</div>
-                    <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
-                </div>
-                <div class="board__card" id='opt-0'>
-                    <div class="board__card-num">1</div>
-                    <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
-                </div>
-                <div class="board__card" id='opt-0'>
-                    <div class="board__card-num">1</div>
-                    <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
-                </div>
-                <div class="board__card" id='opt-0'>
-                    <div class="board__card-num">1</div>
-                    <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
-                </div>
-                <div class="board__card" id='opt-0'>
-                    <div class="board__card-num">1</div>
-                    <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
-                </div>
-                <div class="board__card" id='opt-0'>
-                    <div class="board__card-num">1</div>
-                    <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
-                </div>
-                <div class="board__card" id='opt-0'>
-                    <div class="board__card-num">1</div>
-                    <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
-                </div>
-                <div class="board__card" id='opt-0'>
-                    <div class="board__card-num">1</div>
-                    <div class="board__card-text">option a</div>
-                    <a><i class="board__card-delete icon-arrows-circle-remove"></i></a>
-                </div>
+                
                 
                 
             </div>
         </main>  
         <div class="bottom ">
-            <div class="bottom__cta btn-filled">What should i do?</div>
+            <a href="#popup" class="bottom__cta btn-filled">What should i do?</a href="#popup">
             <input type="description" class="bottom__input"  placeholder="choises...">
-            <button class="btn btn-nofill bottom__button">Add</button>
+            <button class="btn btn-nofill bottom__button"><i class="fas fa-plus fa-lg"></i></button>
         </div>
-        
+        <div class="popup" id="popup">
+            <div class="popup__content">
+                <div class="popup__content__result">option aoption aaaa</div>
+                <a href="#" class="btn popup__content__button">Okay</a>
+            </div>
+        </div>
         
     </body>
 </html>
