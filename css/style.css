@@ -59,7 +59,9 @@ body {
 .bottom {
   width: 70rem;
   margin: 0;
+  background-color: #fff;
   position: fixed;
+  box-shadow: 0rem -1rem 2rem rgba(0, 0, 0, 0.1);
   left: 50%;
   bottom: 0;
   transform: translateX(-50%); }
@@ -69,18 +71,18 @@ body {
     padding: 0.4rem;
     height: 6.2rem;
     transition: all .5s; }
-    .bottom__cta:hover {
-      box-shadow: 0rem -1rem 2rem rgba(0, 0, 0, 0.1); }
   .bottom__input {
-    padding: 1rem;
+    padding: 2rem;
     padding-right: 14rem;
     width: 100%;
     color: #777;
     height: 6.2rem;
     border: none;
     background-color: #fff;
-    font-size: 2rem;
-    box-shadow: 0rem -1rem 2rem rgba(0, 0, 0, 0.1); }
+    font-size: 2rem; }
+    .bottom__input:focus, .bottom__input:hover {
+      box-shadow: 0rem -1rem 2rem rgba(0, 0, 0, 0.1);
+      outline: none; }
   .bottom__button {
     font-size: 2rem;
     position: absolute;
@@ -91,9 +93,7 @@ body {
 .board {
   font-size: 2rem;
   width: 70rem;
-  margin: 0 auto;
-  height: 50rem;
-  overflow: scroll; }
+  margin: 0 auto; }
   .board__card {
     background-color: #fff;
     margin-bottom: 1rem;
@@ -124,6 +124,7 @@ body {
       color: transparent; }
 
 @media (max-width: 700px) {
+  /* Styles */
   .bottom {
     width: 100%; }
   .board {
