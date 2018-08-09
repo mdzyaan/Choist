@@ -28,52 +28,50 @@ body {
   text-align: center;
   text-transform: capitalize;
   color: #fff;
-  background-color: #0f5aa0;
-  border: 2px solid #0f5aa0; }
+  background-color: #43c1f3;
+  border: 2px solid #43c1f3; }
   .btn-filled:hover {
-    color: #0f5aa0;
+    color: #43c1f3;
     background-color: #fff;
-    border: 2px solid #0f5aa0; }
+    border: 2px solid #43c1f3; }
 
 .btn-nofill {
-  color: #0f5aa0;
-  border: 2px solid #0f5aa0;
+  color: #43c1f3;
+  border: 2px solid #43c1f3;
   background-color: #fff;
   transition: all .2s;
   text-align: center;
   border-radius: 5px; }
   .btn-nofill:hover {
     color: #fff;
-    background-color: #0f5aa0; }
+    background-color: #43c1f3; }
 
 .top {
   text-align: center;
-  background-color: #0f5aa0;
+  background-color: #43c1f3;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem; }
-  .top__header {
-    font-family: "Anurati"; }
-    .top__header-text {
-      text-transform: uppercase;
-      font-size: 5rem;
-      letter-spacing: 0.5rem;
-      width: 100%;
-      margin: 0 auto;
-      background-color: #fff;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent; }
+  .top__header-text {
+    font-family: "Anurati";
+    text-transform: uppercase;
+    font-size: 4rem;
+    letter-spacing: 0.5rem;
+    width: 100%;
+    margin: 0 auto;
+    color: #fff; }
+  .top__header-p {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 0 2px 0; }
 
 .bottom {
   width: 70rem;
-  margin: 0;
+  margin: 0 auto;
   background-color: #fff;
-  position: fixed;
   box-shadow: 0rem -1rem 2rem rgba(0, 0, 0, 0.1);
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  padding: 1rem; }
+  padding: 1rem;
+  position: relative;
+  height: 13rem; }
   .bottom__reset {
     float: left;
     width: 48.5%;
@@ -105,10 +103,14 @@ body {
     height: 5.2rem;
     border: none;
     background-color: #eee;
-    font-size: 2rem; }
+    font-size: 2rem;
+    transition: all .5s; }
     .bottom__input:focus, .bottom__input:hover {
-      box-shadow: 0rem -1rem 2rem rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      border: 2px solid #eee;
       outline: none; }
+      .bottom__input:focus:hover + .bottom__button, .bottom__input:hover:hover + .bottom__button {
+        background-color: #fff; }
   .bottom__button {
     width: 5rem;
     height: 5.2rem;
@@ -116,8 +118,8 @@ body {
     top: 1rem;
     right: 1rem;
     padding: 1.2rem 1rem 1rem 1.2rem;
-    color: #0f5aa0;
-    border: 2px solid #0f5aa0;
+    color: #43c1f3;
+    border: 2px solid #43c1f3;
     border-top-left-radius: inherit;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -126,13 +128,14 @@ body {
     transition: all .2s; }
     .bottom__button:hover {
       color: #fff;
-      background-color: #0f5aa0; }
+      background-color: #43c1f3; }
+    .bottom__button:focus {
+      outline: none; }
 
 .board {
   font-size: 2rem;
   width: 70rem;
-  margin: 0 auto;
-  padding: 1rem; }
+  margin: 0 auto; }
   .board__card {
     background-color: #fff;
     margin-bottom: 1rem;
@@ -141,7 +144,7 @@ body {
     transition: all 0.5s; }
     .board__card:hover {
       box-shadow: 0rem 1rem 2rem rgba(0, 0, 0, 0.1);
-      transform: scale(1.05); }
+      transform: scale(1.04); }
     .board__card:hover .board__card-delete {
       transform: translateX(-1rem); }
     .board__card-num {
@@ -152,7 +155,7 @@ body {
       margin-right: 1rem;
       border-radius: 100%;
       float: left;
-      background-color: #0f5aa0;
+      background-color: #43c1f3;
       color: #fff; }
     .board__card-text {
       display: inline-block; }
@@ -162,7 +165,7 @@ body {
       font-size: 3rem;
       display: inline-block;
       -webkit-background-clip: text;
-      color: #0f5aa0;
+      color: #43c1f3;
       border: transparent;
       margin-top: 0.4rem;
       transition: all .5s; }
@@ -196,23 +199,24 @@ body {
       font-family: 'Lato', cursive;
       font-size: 4rem;
       margin: 2rem;
-      background-color: #0f5aa0;
+      background-color: #777;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent; }
     .popup__content__button {
+      display: block;
       font-family: 'Lato', cursive;
       font-size: 2rem;
       text-decoration: none;
       width: 70%;
       text-align: center;
       margin: 0 15% 10% 15%;
-      color: #0f5aa0;
-      border: 2px solid #0f5aa0;
+      color: #43c1f3;
+      border: 2px solid #43c1f3;
       border-radius: 5px; }
       .popup__content__button:hover {
         color: #fff;
-        background-color: #0f5aa0; }
+        background-color: #43c1f3; }
 
 @media (max-width: 700px) {
   /* Styles */
@@ -221,4 +225,5 @@ body {
   .bottom {
     width: 100%; }
   .board {
-    width: 100%; } }
+    width: 100%;
+    padding: 1rem; } }
