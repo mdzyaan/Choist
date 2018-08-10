@@ -55,8 +55,14 @@ var boardcontroller = (function(){
 
             return finalOption 
         },
+        deleteAll: function() {
+            data = {
+                card : [],
+            }
+            return data
+        },
         test: function() {
-            console.log(data.card[2].description.choice)
+            console.log(data.card.length);
         }
     }
 })();
@@ -73,6 +79,9 @@ var UIController = (function() {
         message2: '.message2',
         result: '.bottom__cta',
         publishResult: '.popup__content__result',
+        removeButton: '.bottom__reset',
+        card: '.board__card',
+        id: '.opt-0',
     }
     var nodeListForEach = function(list, callback) {
         for (var i = 0; i < list.length; i++) {
@@ -103,13 +112,27 @@ var UIController = (function() {
             var el = document.getElementById(selectorID);
             el.parentNode.removeChild(el);
         },
+        deleteAllCard: function() {
+            
+            var re = document.querySelectorAll(DOMString.card);
+            if (re.length > 0) {
+                for (var i = 0; i < re.length; i++) {
+                    var ied = re[i].id;
+                    var el = document.getElementById(ied);
+                    el.parentNode.removeChild(el);
+                }
+            }                  
+        },
         updateCard: function(data) {
             var numList = document.querySelectorAll(DOMString.cardNum);
-
-            nodeListForEach(numList, function(curr, index){
+            if (data.card.length > 0) {
+                nodeListForEach(numList, function(curr, index){
                     curr.textContent = data.card[index].num;
-                
-            });
+                });
+            } else {
+                continue;
+            }
+            
         },
         showResult: function(finalResult){
             document.querySelector(DOMString.publishResult).textContent = finalResult;
@@ -138,26 +161,31 @@ var controller = (function(boardCtrl, UICtrl) {
     var DOM = UICtrl.getDOMString();
     var setupListener = function() {
 
-        
-        
         document.querySelector(DOM.addButton).addEventListener('click',ctrlAddItem);
         document.addEventListener('keypress',function(event){
             if (event.keyCode === 13 || event.which === 13) {
                 ctrlAddItem();
             }
         });
-
         
         document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
         document.querySelector(DOM.result).addEventListener('click', ctrlResult);
+        document.querySelector(DOM.removeButton).addEventListener('click', ctrlRemoveAllItem);
     }
-
+    
     var update = function() {
         // 1. Update the data structure
         var updatedData = boardCtrl.updateCard();
         // 2. Update the UI
+        console.log(updatedData);
         UICtrl.updateCard(updatedData);
 
+    }
+    var ctrlRemoveAllItem = function(event) {
+        // 1. delete all the data from board ctrl
+        boardCtrl.deleteAll();
+        // 2. update the UI
+        UICtrl.deleteAllCard();
     }
 
     var ctrlAddItem = function() {
@@ -166,14 +194,14 @@ var controller = (function(boardCtrl, UICtrl) {
         data = boardCtrl.checkData();
         // 1. Get input from UI
         input = UICtrl.getInput();
-        if (input.choice == '' && input.choice.length < 10) {
+        if (input.choice == '' && input.choice.length < 20) {
             document.querySelector(DOM.message2).style.display = "block";
             setInterval(function(){ 
                 document.querySelector(DOM.message2).style.display = "none"; 
             }, 3000);
             
         }else // 2. Add item to the board controller
-         if (input.choice !== '' && input.choice.length < 10) {
+         if (input.choice !== '' && input.choice.length < 25) {
             newItem = boardCtrl.addCard(input);
             // 3. Add item to the UI
             UICtrl.addNewCard(newItem);
