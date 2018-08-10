@@ -113,9 +113,9 @@ body {
     transition: all .5s; }
   .bottom__input {
     padding: 2rem;
-    margin: 0 1% 0 0;
+    margin: 0 2% 0 0;
     padding-right: 7rem;
-    width: 79%;
+    width: 78%;
     color: #777;
     height: 5.2rem;
     border: transparent;
