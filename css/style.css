@@ -50,27 +50,30 @@ body {
     color: #fff;
     border: 2px solid #32e232;
     background-color: #32e232;
-    box-shadow: rgba(50, 226, 50, 0.3) 0px 0px 8px 0px, rgba(50, 226, 50, 0.5) 0px 0px 30px 5px; }
+    box-shadow: rgba(50, 226, 50, 0.3) 0px 0px 8px 0px, rgba(50, 226, 50, 0.5) 0px 0px 30px 2px; }
 
 .top {
   text-align: center;
   background-color: #fff;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem; }
-  .top__header-text {
-    font-family: "Nunito";
-    font-weight: 200;
-    text-transform: uppercase;
-    font-size: 4rem;
-    letter-spacing: 1   rem;
-    width: 100%;
+  margin-bottom: 1.5rem; }
+  .top__header {
+    width: 70rem;
     margin: 0 auto;
-    color: #32e232; }
-  .top__header-p {
-    font-family: "Lata";
-    color: #32e232;
-    font-size: 1.5rem;
-    margin: 0 0 2px 0; }
+    background-color: #f7f7f7; }
+    .top__header-text {
+      font-family: "Lato";
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 4rem;
+      letter-spacing: 1.5rem;
+      width: 100%;
+      color: #32e232; }
+    .top__header-p {
+      font-family: "Lato";
+      color: #32e232;
+      font-size: 1.5rem;
+      padding: 0 0 1rem; }
 
 .parmes {
   transition: all 0.2s; }
@@ -117,7 +120,7 @@ body {
   .bottom__input {
     padding: 2rem;
     margin: 0 2% 0 0;
-    padding-right: 7rem;
+    padding-right: 4rem;
     width: 78%;
     color: #777;
     height: 5.2rem;
@@ -160,7 +163,11 @@ body {
     padding: 1rem;
     transition: transform 0.2s ease-in-out 0s, background-color 0.2s ease-in-out 0s, box-shadow 0.2s ease-in-out 0s;
     border-radius: 5px; }
-    .board__card:hover {
+    .board__card-message {
+      text-align: center;
+      color: #32e232;
+      font-weight: 700; }
+    .board__card:hover:not(:first-child) {
       background-color: #fff;
       box-shadow: rgba(0, 0, 0, 0.03) 0px 0px 8px 0px, rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
       transform: scale(1.04);
@@ -244,7 +251,7 @@ body {
   /* Styles */
   html {
     font-size: 50%; }
-  .bottom {
+  .bottom, .top__header {
     width: 100%; }
   .board {
     width: 100%;
