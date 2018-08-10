@@ -7,8 +7,8 @@ var boardcontroller = (function(){
 
     var data = {
         card: []
-    }
-
+    };
+    var dataCheck = [];
     return {
         addCard: function(description) {
             var ID , newCard, num;
@@ -16,14 +16,12 @@ var boardcontroller = (function(){
             if (data.card.length > 0) {
                 ID = data.card[data.card.length - 1].id + 1;
                 num = data.card.length + 1;
-                console.log(ID + ' ' + num)
             } else {
                 ID = 0;
                 num = 1
             }
 
             newCard = new Card(ID, description,num);
-            console.log(newCard)
 
             data.card.push(newCard);
             return newCard
@@ -39,10 +37,26 @@ var boardcontroller = (function(){
             if (index !== -1) {
                 data.card.splice(index, 1);
             }
-            console.log(data.card)
+        },
+        updateCard: function() {
+            for (var i = 0; i < data.card.length; i++) {
+                data.card[i].num = i + 1;
+            }
+            return data
+        },
+        checkData: function() {
+            return data
+        },
+        selectOption:function() {
+            var randomNum, finalOption;
+
+            randomNum = Math.floor(Math.random() * data.card.length);
+            finalOption = data.card[randomNum].description.choice;
+
+            return finalOption 
         },
         test: function() {
-            console.log(data.card)
+            console.log(data.card[2].description.choice)
         }
     }
 })();
@@ -54,6 +68,16 @@ var UIController = (function() {
         boardContainer: '.board',
         deleteButton: '.far',
         container: '.board',
+        cardNum: '.board__card-num',
+        message1: '.message1',
+        message2: '.message2',
+        result: '.bottom__cta',
+        publishResult: '.popup__content__result',
+    }
+    var nodeListForEach = function(list, callback) {
+        for (var i = 0; i < list.length; i++) {
+            callback(list[i], i);
+        }
     }
     return {
         getInput: function() {
@@ -79,6 +103,18 @@ var UIController = (function() {
             var el = document.getElementById(selectorID);
             el.parentNode.removeChild(el);
         },
+        updateCard: function(data) {
+            var numList = document.querySelectorAll(DOMString.cardNum);
+
+            nodeListForEach(numList, function(curr, index){
+                    curr.textContent = data.card[index].num;
+                
+            });
+        },
+        showResult: function(finalResult){
+            document.querySelector(DOMString.publishResult).textContent = finalResult;
+        },
+        
         clearField: function(){
             
             var fields, fieldsArr;
@@ -99,9 +135,10 @@ var UIController = (function() {
 })();
 
 var controller = (function(boardCtrl, UICtrl) {
+    var DOM = UICtrl.getDOMString();
     var setupListener = function() {
 
-        var DOM = UICtrl.getDOMString();
+        
         
         document.querySelector(DOM.addButton).addEventListener('click',ctrlAddItem);
         document.addEventListener('keypress',function(event){
@@ -112,19 +149,48 @@ var controller = (function(boardCtrl, UICtrl) {
 
         
         document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
+        document.querySelector(DOM.result).addEventListener('click', ctrlResult);
+    }
+
+    var update = function() {
+        // 1. Update the data structure
+        var updatedData = boardCtrl.updateCard();
+        // 2. Update the UI
+        UICtrl.updateCard(updatedData);
 
     }
 
     var ctrlAddItem = function() {
-        var input , newItem;
+        var input , newItem, data;
+
+        data = boardCtrl.checkData();
         // 1. Get input from UI
         input = UICtrl.getInput();
-        // 2. Add item to the board controller
-        newItem = boardCtrl.addCard(input);
-        // 3. Add item to the UI
-        UICtrl.addNewCard(newItem);
-        // 4. Clear the fields
-        UICtrl.clearField();
+        if (input.choice == '' && input.choice.length < 10) {
+            document.querySelector(DOM.message2).style.display = "block";
+            setInterval(function(){ 
+                document.querySelector(DOM.message2).style.display = "none"; 
+            }, 3000);
+            
+        }else // 2. Add item to the board controller
+         if (input.choice !== '' && input.choice.length < 10) {
+            newItem = boardCtrl.addCard(input);
+            // 3. Add item to the UI
+            UICtrl.addNewCard(newItem);
+            // 4. Clear the fields
+            UICtrl.clearField();
+            update();
+        }
+
+        // for (var i = 0; i < data.card.length; i++) {
+        //     if (data.card[i].description.choice ==  input.choice) {
+        //         document.querySelector(DOM.message1).style.display = "block"; 
+        //         setInterval(function(){ 
+        //             document.querySelector(DOM.message1).style.display = "none"; 
+        //         }, 5000);
+        //     } 
+        // }
+
     }
 
     var ctrlDeleteItem = function(event) {
@@ -139,12 +205,17 @@ var controller = (function(boardCtrl, UICtrl) {
             boardCtrl.deleteCard(ID);           
             // 2. update card in the UI
             UICtrl.deleteListCard(itemID);
+            update();
         }
-
-        
-
-        
     }
+
+    var ctrlResult = function() {
+        // 1. Get the result from board controller
+        var finalResult = boardCtrl.selectOption();
+        
+        // 2. Display it on UI popup
+        UICtrl.showResult(finalResult);
+    } 
     return {
         init: function() {
             console.log('Application started')
