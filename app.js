@@ -128,7 +128,6 @@ var UIController = (function() {
             if (data.card.length > 0) {
                 nodeListForEach(numList, function(curr, index){
                     curr.textContent = data.card[index].num;
-                    console.log(data.card[index].num)
                 });
             }
             
