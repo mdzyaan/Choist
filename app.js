@@ -62,7 +62,7 @@ var boardcontroller = (function(){
             return data
         },
         test: function() {
-            console.log(data.card.length);
+            console.log(data.card);
         }
     }
 })();
@@ -128,9 +128,8 @@ var UIController = (function() {
             if (data.card.length > 0) {
                 nodeListForEach(numList, function(curr, index){
                     curr.textContent = data.card[index].num;
+                    console.log(data.card[index].num)
                 });
-            } else {
-                continue;
             }
             
         },
@@ -203,6 +202,7 @@ var controller = (function(boardCtrl, UICtrl) {
         }else // 2. Add item to the board controller
          if (input.choice !== '' && input.choice.length < 25) {
             newItem = boardCtrl.addCard(input);
+            console.log(newItem)
             // 3. Add item to the UI
             UICtrl.addNewCard(newItem);
             // 4. Clear the fields
