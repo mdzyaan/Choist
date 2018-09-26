@@ -3,7 +3,7 @@ var boardcontroller = (function(){
         this.id = id;
         this.description = description;
         this.num = num
-    }
+    };
 
     var data = {
         card: []
@@ -18,13 +18,13 @@ var boardcontroller = (function(){
                 num = data.card.length + 1;
             } else {
                 ID = 0;
-                num = 1
+                num = 1;
             }
 
             newCard = new Card(ID, description,num);
 
             data.card.push(newCard);
-            return newCard
+            return newCard;
         },
         deleteCard: function(ID) {
             var ids,index;
@@ -42,10 +42,10 @@ var boardcontroller = (function(){
             for (var i = 0; i < data.card.length; i++) {
                 data.card[i].num = i + 1;
             }
-            return data
+            return data;
         },
         checkData: function() {
-            return data
+            return data;
         },
         selectOption:function() {
             var randomNum, finalOption;
@@ -53,35 +53,32 @@ var boardcontroller = (function(){
             randomNum = Math.floor(Math.random() * data.card.length);
             finalOption = data.card[randomNum].description.choice;
 
-            return finalOption 
+            return finalOption; 
         },
         deleteAll: function() {
             data = {
                 card : [],
             }
             return data
-        },
-        test: function() {
-            console.log(data.card);
         }
     }
 })();
 
 var UIController = (function() {
     var DOMString = {
-        inputField: '.bottom__input',
-        addButton: '.bottom__button',
-        boardContainer: '.board',
-        deleteButton: '.far',
-        container: '.board',
-        cardNum: '.board__card-num',
-        message1: '.message1',
-        message2: '.message2',
-        result: '.bottom__cta',
-        publishResult: '.popup__content__result',
-        removeButton: '.bottom__reset',
-        card: '.board__card',
-        id: '.opt-0',
+        inputField: ".bottom__input",
+        addButton: ".bottom__button",
+        boardContainer: ".board",
+        deleteButton: ".far",
+        container: ".board",
+        cardNum: ".board__card-num",
+        message1: ".message1",
+        message2: ".message2",
+        result: ".bottom__cta",
+        publishResult: ".popup__content__result",
+        removeButton: ".bottom__reset",
+        card: ".board__card",
+        id: ".opt-0",
     }
     var nodeListForEach = function(list, callback) {
         for (var i = 0; i < list.length; i++) {
@@ -99,14 +96,14 @@ var UIController = (function() {
 
             element = DOMString.boardContainer;
             // create html with placeholder text
-            html = '<div class="board__card" id="opt-%id%"><div class="board__card-num">%num%</div><div class="board__card-text">%description%</div><button class="board__card-delete"><i class="far fa-times-circle"></i></button></div>'
+            html = '<div class="board__card" id="opt-%id%"><div class="board__card-num">%num%</div><div class="board__card-text">%description%</div><button class="board__card-delete"><i class="far fa-times-circle"></i></button></div>';
             // replace placeholder with actural data
             newHtml = html.replace('%id%', obj.id);
-            newHtml = newHtml.replace('%num%', parseInt(obj.num));
+            newHtml = newHtml.replace('%num%', parseInt(obj.num, 10));
             newHtml = newHtml.replace('%description%', obj.description.choice);
 
             // insert the html into the DOM
-            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
+            document.querySelector(element).insertAdjacentHTML("beforeend", newHtml);
         },
         deleteListCard: function(selectorID) {
             var el = document.getElementById(selectorID);
@@ -150,7 +147,7 @@ var UIController = (function() {
             fieldsArr[0].focus();
         },
         getDOMString: function() {
-            return DOMString
+            return DOMString;
         }
     }
 })();
@@ -227,7 +224,7 @@ var controller = (function(boardCtrl, UICtrl) {
         
         if (itemID) {
             splitID = itemID.split('-');
-            ID = parseInt(splitID[1]);
+            ID = parseInt(splitID[1], 10);
             // 1. Delete card from data structure 
             boardCtrl.deleteCard(ID);           
             // 2. update card in the UI
@@ -245,7 +242,6 @@ var controller = (function(boardCtrl, UICtrl) {
     } 
     return {
         init: function() {
-            console.log('Application started')
             setupListener();
         }
     }
