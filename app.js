@@ -58,8 +58,8 @@ var boardcontroller = (function(){
         deleteAll: function() {
             data = {
                 card : [],
-            }
-            return data
+            };
+            return data;
         }
     }
 })();
@@ -86,11 +86,7 @@ var UIController = (function() {
         }
     }
     return {
-        getInput: function() {
-            return {
-                choice: document.querySelector(DOMString.inputField).value,
-            }
-        },
+        getInput: () => choice: document.querySelector(DOMString.inputField).value,
         addNewCard: function(obj) {
             var html, newHtml, element;
 
@@ -154,28 +150,6 @@ var UIController = (function() {
 
 var controller = (function(boardCtrl, UICtrl) {
     var DOM = UICtrl.getDOMString();
-    var setupListener = function() {
-
-        document.querySelector(DOM.addButton).addEventListener('click',ctrlAddItem);
-        document.addEventListener('keypress',function(event){
-            if (event.keyCode === 13 || event.which === 13) {
-                ctrlAddItem();
-            }
-        });
-        
-        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
-        document.querySelector(DOM.result).addEventListener('click', ctrlResult);
-        document.querySelector(DOM.removeButton).addEventListener('click', ctrlRemoveAllItem);
-    }
-    
-    var update = function() {
-        // 1. Update the data structure
-        var updatedData = boardCtrl.updateCard();
-        // 2. Update the UI
-        console.log(updatedData);
-        UICtrl.updateCard(updatedData);
-
-    }
     var ctrlRemoveAllItem = function(event) {
         // 1. delete all the data from board ctrl
         boardCtrl.deleteAll();
@@ -198,23 +172,12 @@ var controller = (function(boardCtrl, UICtrl) {
         }else // 2. Add item to the board controller
          if (input.choice !== '' && input.choice.length < 25) {
             newItem = boardCtrl.addCard(input);
-            console.log(newItem)
             // 3. Add item to the UI
             UICtrl.addNewCard(newItem);
             // 4. Clear the fields
             UICtrl.clearField();
             update();
         }
-
-        // for (var i = 0; i < data.card.length; i++) {
-        //     if (data.card[i].description.choice ==  input.choice) {
-        //         document.querySelector(DOM.message1).style.display = "block"; 
-        //         setInterval(function(){ 
-        //             document.querySelector(DOM.message1).style.display = "none"; 
-        //         }, 5000);
-        //     } 
-        // }
-
     }
 
     var ctrlDeleteItem = function(event) {
@@ -240,6 +203,28 @@ var controller = (function(boardCtrl, UICtrl) {
         // 2. Display it on UI popup
         UICtrl.showResult(finalResult);
     } 
+    var setupListener = function() {
+
+        document.querySelector(DOM.addButton).addEventListener('click',ctrlAddItem);
+        document.addEventListener('keypress',function(event){
+            if (event.keyCode === 13 || event.which === 13) {
+                ctrlAddItem();
+            }
+        });
+        
+        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
+        document.querySelector(DOM.result).addEventListener('click', ctrlResult);
+        document.querySelector(DOM.removeButton).addEventListener('click', ctrlRemoveAllItem);
+    }
+    
+    var update = function() {
+        // 1. Update the data structure
+        var updatedData = boardCtrl.updateCard();
+        // 2. Update the UI
+        console.log(updatedData);
+        UICtrl.updateCard(updatedData);
+
+    }
     return {
         init: function() {
             setupListener();
